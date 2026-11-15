@@ -48,11 +48,32 @@ make up-image   # or pull the prebuilt image (amd64/arm64) from ghcr.io/desawsum
 make down       # stop the console
 ```
 
-`make up` needs no registry: it builds `docker/console.Dockerfile` locally and tags it `emulator-ui`.
-`make up-image` pulls `$(IMAGE)`, which defaults to `ghcr.io/desawsume/emulator-ui:latest` — published by the
-[Publish image](.github/workflows/publish-image.yml) workflow when you push a `v*` tag. Point either at
-somewhere else with `make up-image IMAGE=ghcr.io/you/emulator-ui:v0.1.0`, or publish from your machine with
-`make image-push IMAGE=...` after `docker login ghcr.io`.
+`make up` needs no registry: it builds `docker/console.Dockerfile` locally and tags it `emulator-ui`. Use this
+unless you specifically want a prebuilt image.
+
+`make up-image` pulls `$(IMAGE)`, default `ghcr.io/desawsume/emulator-ui:latest`. That only works once the image
+has been published and made public (see [Publishing the image](#publishing-the-image)); until then it fails with
+`error from registry: denied`, which is how the registry reports a missing or private package to an anonymous
+pull. Point it elsewhere with `make up-image IMAGE=ghcr.io/you/emulator-ui:v0.1.0`.
+
+### Publishing the image
+
+Either push a version tag and let CI do it:
+
+```bash
+git tag v0.1.0 && git push origin v0.1.0   # runs .github/workflows/publish-image.yml (amd64 + arm64)
+```
+
+or build and push from your machine:
+
+```bash
+docker login ghcr.io -u <github-username>   # password = classic PAT with write:packages
+make image-push                             # or: make image-push IMAGE=ghcr.io/you/emulator-ui:v0.1.0
+```
+
+A new package is **private** by default — it inherits the repository's permissions but not its visibility. For
+`make up-image` to work without `docker login`, open the package from your profile's Packages tab once and set
+*Package settings → Change visibility → Public*.
 
 The console runs in its own container and never starts or stops emulators. Start them in any order; the console
 picks up emulator restarts, new regions and new keys on its own.
