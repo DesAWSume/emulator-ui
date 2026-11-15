@@ -4,11 +4,8 @@
 
 **Please don't report security issues in public GitHub issues, discussions or pull requests.**
 
-Report them privately, either way:
-
-1. **GitHub private vulnerability reporting (preferred).** Go to the repository's
-   [Security tab](https://github.com/DesAWSume/emulator-ui/security) and choose **Report a vulnerability**.
-2. **Email** deeptaroop2015@gmail.com with the subject `[emulator-ui security]`.
+Report them privately through GitHub private vulnerability reporting: go to the repository's
+[Security tab](https://github.com/DesAWSume/emulator-ui/security) and choose **Report a vulnerability**.
 
 Please include:
 - the version or commit you tested;
