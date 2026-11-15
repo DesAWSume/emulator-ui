@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/D33ptar00p/emulator-ui/actions/workflows/ci.yml"><img src="https://github.com/D33ptar00p/emulator-ui/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/DesAWSume/emulator-ui/actions/workflows/ci.yml"><img src="https://github.com/DesAWSume/emulator-ui/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <img src="assets/brand/badges/services.svg" alt="services: 436">
   <img src="assets/brand/badges/emulator.svg" alt="tested with: emulator v1.0.322">
   <img src="assets/brand/badges/python.svg" alt="Python: 3.11+">
@@ -42,11 +42,17 @@
 Requires Docker and a running AWS Emulator (see [Emulator requirements](#emulator-requirements)).
 
 ```bash
-git clone https://github.com/D33ptar00p/emulator-ui.git && cd emulator-ui
-make up-image   # pull the prebuilt image (amd64/arm64) + start -> http://127.0.0.1:8080
-make up         # or build the image from source
+git clone https://github.com/DesAWSume/emulator-ui.git && cd emulator-ui
+make up         # build the image from source + start -> http://127.0.0.1:8080
+make up-image   # or pull the prebuilt image (amd64/arm64) from ghcr.io/desawsume/emulator-ui
 make down       # stop the console
 ```
+
+`make up` needs no registry: it builds `docker/console.Dockerfile` locally and tags it `emulator-ui`.
+`make up-image` pulls `$(IMAGE)`, which defaults to `ghcr.io/desawsume/emulator-ui:latest` — published by the
+[Publish image](.github/workflows/publish-image.yml) workflow when you push a `v*` tag. Point either at
+somewhere else with `make up-image IMAGE=ghcr.io/you/emulator-ui:v0.1.0`, or publish from your machine with
+`make image-push IMAGE=...` after `docker login ghcr.io`.
 
 The console runs in its own container and never starts or stops emulators. Start them in any order; the console
 picks up emulator restarts, new regions and new keys on its own.
@@ -121,11 +127,13 @@ against the emulator's own certificate. API docs: http://127.0.0.1:8080/api/docs
 
 ## Contact
 
-- Bugs and questions: [GitHub Issues](https://github.com/D33ptar00p/emulator-ui/issues)
+- Bugs and questions: [GitHub Issues](https://github.com/DesAWSume/emulator-ui/issues)
 - Contributing: see [CONTRIBUTING.md](CONTRIBUTING.md)
 - Security: see [SECURITY.md](SECURITY.md); don't open public issues
-- Other: Deeptaroop Mojumdar, deeptaroop2015@gmail.com
 
 ## License
 
 [Apache License 2.0](LICENSE). Copyright 2026 Deeptaroop Mojumdar. See [NOTICE](NOTICE).
+
+This repository is a fork of [D33ptar00p/emulator-ui](https://github.com/D33ptar00p/emulator-ui); it builds and
+publishes its own container image but keeps the upstream copyright and attribution the licence requires.

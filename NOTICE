@@ -1,7 +1,12 @@
-Emulator UI - https://github.com/D33ptar00p/emulator-ui
+Emulator UI - https://github.com/DesAWSume/emulator-ui
+
+This repository is a fork of Emulator UI (https://github.com/D33ptar00p/emulator-ui). It builds and
+publishes its own container image (ghcr.io/desawsume/emulator-ui). The upstream copyright and
+attribution below are retained as the Apache License, Version 2.0 requires.
+
 Copyright 2026 Deeptaroop Mojumdar <deeptaroop2015@gmail.com> (https://github.com/D33ptar00p)
 
-A personal open-source project by Deeptaroop Mojumdar.
+Originally a personal open-source project by Deeptaroop Mojumdar.
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 

@@ -9,7 +9,7 @@ COPY ui/ ./
 RUN npx tsc -b && npx vite build --outDir /out --emptyOutDir
 
 FROM python:3.12.7-slim-bookworm
-LABEL org.opencontainers.image.source="https://github.com/D33ptar00p/emulator-ui" \
+LABEL org.opencontainers.image.source="https://github.com/DesAWSume/emulator-ui" \
       org.opencontainers.image.licenses="Apache-2.0"
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
     EMULATOR_UI_STATIC=/app/static

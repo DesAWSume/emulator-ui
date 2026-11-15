@@ -2,7 +2,7 @@
 # Build and start the console as its own container (independent of the emulator containers).
 #
 #   ./scripts/console-up.sh        # -> http://127.0.0.1:8080
-#   EMULATOR_CONSOLE_BUILD=0 EMULATOR_CONSOLE_IMAGE=ghcr.io/d33ptar00p/emulator-ui:latest ./scripts/console-up.sh
+#   EMULATOR_CONSOLE_BUILD=0 EMULATOR_CONSOLE_IMAGE=ghcr.io/desawsume/emulator-ui:latest ./scripts/console-up.sh
 #                                  # pull a prebuilt image instead of building
 #
 # The console joins the shared Docker network `aws-emulator` (where emulator containers named

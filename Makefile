@@ -3,13 +3,21 @@ SHELL := /bin/bash
 ENV := source scripts/emulator-env.sh &&
 REPORTS := reports
 
-.PHONY: social-preview up up-image down open sync test ui-test lint dev build catalog inventory-baseline
+# Published image used by `make up-image` and written by `make image-push` / the Publish image
+# workflow. Override per invocation: make up-image IMAGE=ghcr.io/desawsume/emulator-ui:v0.1.0
+IMAGE ?= ghcr.io/desawsume/emulator-ui:latest
+
+.PHONY: social-preview up up-image image-push down open sync test ui-test lint dev build catalog inventory-baseline
 
 up:        ## build + start the console container -> http://127.0.0.1:8080 (emulator can start before or after)
 	./scripts/console-up.sh
 
-up-image:  ## pull the prebuilt image from GHCR + start the console (no local build)
-	EMULATOR_CONSOLE_BUILD=0 EMULATOR_CONSOLE_IMAGE=ghcr.io/d33ptar00p/emulator-ui:latest ./scripts/console-up.sh
+up-image:  ## pull $(IMAGE) + start the console (no local build)
+	EMULATOR_CONSOLE_BUILD=0 EMULATOR_CONSOLE_IMAGE=$(IMAGE) ./scripts/console-up.sh
+
+image-push: ## build $(IMAGE) for amd64+arm64 and push it (needs `docker login ghcr.io`)
+	docker buildx build -f docker/console.Dockerfile \
+		--platform linux/amd64,linux/arm64 -t $(IMAGE) --push .
 
 down:      ## stop the console (emulators keep running)
 	./scripts/console-down.sh

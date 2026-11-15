@@ -2,7 +2,7 @@
 
 Thanks for your interest! Bug reports, ideas and pull requests are all welcome.
 
-- **Bugs and feature ideas:** open an [issue](https://github.com/D33ptar00p/emulator-ui/issues/new/choose) using one
+- **Bugs and feature ideas:** open an [issue](https://github.com/DesAWSume/emulator-ui/issues/new/choose) using one
   of the templates.
 - **Security problems:** never open a public issue. Follow [SECURITY.md](SECURITY.md).
 - **Small fixes** (typos, docs, obvious bugs): send a pull request directly.

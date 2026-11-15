@@ -6,10 +6,10 @@
   "author": "Deeptaroop Mojumdar <deeptaroop2015@gmail.com> (https://github.com/D33ptar00p)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/D33ptar00p/emulator-ui.git",
+    "url": "git+https://github.com/DesAWSume/emulator-ui.git",
     "directory": "ui"
   },
-  "homepage": "https://github.com/D33ptar00p/emulator-ui",
+  "homepage": "https://github.com/DesAWSume/emulator-ui",
   "type": "module",
   "scripts": {
     "dev": "vite",

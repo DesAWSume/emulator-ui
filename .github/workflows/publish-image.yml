@@ -1,4 +1,6 @@
-# Build the console image for amd64 + arm64 and publish it to ghcr.io/d33ptar00p/emulator-ui.
+# Build the console image for amd64 + arm64 and publish it to ghcr.io/<owner>/emulator-ui, where
+# <owner> is this repository's owner (docker/metadata-action lowercases it, so a mixed-case owner
+# such as DesAWSume becomes ghcr.io/desawsume/emulator-ui).
 # Runs on version tags (v1.2.3) or manually. Actions are pinned to commit SHAs.
 name: Publish image
 
